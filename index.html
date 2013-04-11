@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  </head>
+  <body>
+  <button>Atras</button>
+	<button>Pausa</button>
+	<button>Reproducir</button>	
+	<button>Adelante</button>
+	<br>
+	<!--magic bookmark-->
+	<a href="javascript:function includeJavascript(src) {
+		if (document.createElement && document.getElementsByTagName) {
+			var head_tag = document.getElementsByTagName('head')[0];
+			var script_tag = document.createElement('script');
+			script_tag.setAttribute('type', 'text/javascript');
+			script_tag.setAttribute('src', src);
+			head_tag.appendChild(script_tag);
+		}
+	}
+	includeJavascript('https://cdn.firebase.com/v0/firebase.js');
+	includeJavascript('remote.js');	
+	" >Bookmark This</a>	
+  
+    <script>
+		var myDataRef = new Firebase('https://rn66h22htpz.firebaseio-demo.com/');
+
+		$(document).ready(function(){
+			$("button").click(function(){
+				myDataRef.set({action: $(this).text()});
+			});
+		});
+	</script>
+	
+  </body>
+</html>
